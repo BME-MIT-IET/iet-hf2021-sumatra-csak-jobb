@@ -1,0 +1,9 @@
+init world
+S 2
+F
+F
+F
+init creatures
+0 researcher
+F
+save 30-out.txt

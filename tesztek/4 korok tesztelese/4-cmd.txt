@@ -1,0 +1,6 @@
+load 4-in.txt
+start managed
+pickup
+move 0
+finish
+save 4-out.txt

@@ -1,0 +1,7 @@
+load 1-in.txt
+init creatures
+1 eskimo
+2 polarbear
+0 researcher
+F
+save 1-out.txt

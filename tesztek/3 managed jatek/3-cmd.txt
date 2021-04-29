@@ -1,0 +1,8 @@
+load 3-in.txt
+start managed
+step 0
+move 1
+finish
+step 1
+2
+save 3-out.txt

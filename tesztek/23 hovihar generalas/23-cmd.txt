@@ -1,0 +1,6 @@
+load 23-in.txt
+start managed
+snowstorm
+0 2
+F
+save 23-out.txt

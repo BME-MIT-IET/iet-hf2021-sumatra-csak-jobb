@@ -1,0 +1,6 @@
+load 18-in.txt
+start automated
+use 0
+use 0
+use 0
+save 18-out.txt

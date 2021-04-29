@@ -1,0 +1,4 @@
+load tesztek/26 igloo epites/26-in.txt
+start automated
+ability
+save tesztek/26 igloo epites/26-out.txt

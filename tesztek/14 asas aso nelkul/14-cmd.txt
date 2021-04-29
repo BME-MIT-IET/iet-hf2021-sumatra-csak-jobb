@@ -1,0 +1,6 @@
+load 14-in.txt
+start automated
+dig
+dig
+dig
+save 14-out.txt

@@ -1,0 +1,3 @@
+load 29-in.txt
+start automated
+step 2
