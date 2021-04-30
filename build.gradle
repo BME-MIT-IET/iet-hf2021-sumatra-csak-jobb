@@ -1,6 +1,5 @@
 // Plugins and dependencies
 plugins {
-    id 'java'
     id 'application'
 }
 
@@ -14,7 +13,9 @@ dependencies {
 }
 
 // Project structure
-project.mainClassName = 'graphics.Main'
+application {
+    mainClassName = 'graphics.Main'
+}
 
 sourceSets {
     main.java {
@@ -25,7 +26,16 @@ sourceSets {
     }
 }
 
-// Additional configuration
+// Additional configuration: tests
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+// Additional configuration: JAR deployment
+jar {
+    manifest {
+        attributes (
+            'Main-Class': 'graphics.Main'
+        )
+    }
 }
