@@ -27,7 +27,7 @@ sourceSets {
 }
 
 // Additional configuration: tests
-tasks.named('test') {
+test {
     useJUnitPlatform()
 }
 
