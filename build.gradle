@@ -1,0 +1,31 @@
+// Plugins and dependencies
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+// Project structure
+project.mainClassName = 'graphics.Main'
+
+sourceSets {
+    main.java {
+        srcDir 'src/main'
+    }
+    test.java {
+        srcDir 'src/test'
+    }
+}
+
+// Additional configuration
+tasks.named('test') {
+    useJUnitPlatform()
+}
