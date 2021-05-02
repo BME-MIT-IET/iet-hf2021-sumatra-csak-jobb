@@ -1,2 +1,7 @@
-.idea
+# IDEA-related
+.idea/
 *.iml
+
+# Gradle-related
+.gradle
+build
