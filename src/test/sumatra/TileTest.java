@@ -4,6 +4,9 @@ import graphics.IView;
 import jdk.jshell.spi.ExecutionControl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import static org.mockito.Mockito.*;
@@ -28,17 +31,22 @@ public class TileTest {
 
     @Test
     void accept_moreCreatures() {
-
+        //TODO
     }
 
     @Test
     void remove_playerOnTile() {
-
+        //TODO
     }
 
     @Test
     void remove_playerNotOnTile() {
+        //TODO
+    }
 
+    @Test
+    void clearCreatures_simple() {
+        //TODO
     }
 
     @Test
@@ -244,4 +252,85 @@ public class TileTest {
         verifyNoMoreInteractions(b);
     }
 
+    @Test
+    void addNeighbor_noNeighbor() {
+        Tile tile = new Tile(1, 1);
+        Tile n = new Tile(2, 2);
+
+        assertFalse(tile.isNeighbor(n));
+        assertFalse(n.isNeighbor(tile));
+        assertFalse(tile.getNeighbors().contains(n));
+        assertFalse(n.getNeighbors().contains(tile));
+    }
+
+    @Test
+    void addNeighbor_oneNeighbor() {
+        Tile tile = new Tile(1, 1);
+        Tile n = new Tile(2, 2);
+
+        tile.addNeighbor(n);
+
+        assertTrue(tile.getNeighbors().contains(n));
+        assertTrue(tile.isNeighbor(n));
+        assertTrue(n.getNeighbors().contains(tile));    // TODO: kolcsonosseg
+        assertTrue(n.isNeighbor(tile));                 //
+    }
+
+    @Test
+    void addNeighbor_moreNeighbor() {
+        Tile tile = new Tile(1, 2);
+        Tile n1 = new Tile(2, 3);
+        Tile n2 = new Tile(3, 4);
+
+        tile.addNeighbor(n1);
+        tile.addNeighbor(n2);
+
+        ArrayList<Tile> neighbors = tile.getNeighbors();
+
+        assertTrue(tile.isNeighbor(n1));
+        assertTrue(tile.isNeighbor(n2));
+        assertFalse(n1.isNeighbor(n2));
+        assertFalse(n2.isNeighbor(n1));
+    }
+
+
+    @Test
+    void getNeighingCreatures() {
+        Tile tile = new Tile(1, 1);
+        Tile n1 = new Tile(2, 1);
+        Tile n2 = new Tile(3,2);
+
+        tile.addNeighbor(n1);
+        n1.addNeighbor(tile);
+        tile.addNeighbor(n2);
+        n2.addNeighbor(tile);
+
+        Creature c1 = mock(Creature.class);
+        Creature c2 = mock(Creature.class);
+        Creature c3 = mock(Creature.class);
+        Creature c4 = mock(Creature.class);
+
+        tile.accept(c1);
+        n1.accept(c2);
+        n2.accept(c3);
+        n2.accept(c4);
+
+        ArrayList<Creature> tileNeighings = tile.getNeighingCreatures();
+        assertFalse(tileNeighings.contains(c1));
+        assertTrue(tileNeighings.contains(c2));
+        assertTrue(tileNeighings.contains(c3));
+        assertTrue(tileNeighings.contains(c4));
+
+        ArrayList<Creature> n1Neighings = n1.getNeighingCreatures();
+        assertTrue(n1Neighings.contains(c1));
+        assertFalse(n1Neighings.contains(c2));
+        assertFalse(n1Neighings.contains(c3));
+        assertFalse(n1Neighings.contains(c4));
+
+        ArrayList<Creature> n2Neighings = n1.getNeighingCreatures();
+        assertTrue(n2Neighings.contains(c1));
+        assertFalse(n2Neighings.contains(c2));
+        assertFalse(n2Neighings.contains(c3));
+        assertFalse(n2Neighings.contains(c4));
+    }
 }
