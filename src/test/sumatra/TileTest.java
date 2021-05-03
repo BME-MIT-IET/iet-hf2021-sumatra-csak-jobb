@@ -44,6 +44,7 @@ public class TileTest {
     @Test
     void placeItem_noItem() {
         Tile tile = new Tile(1, 0);
+
         assertNull(tile.getItem());
     }
 
@@ -52,8 +53,9 @@ public class TileTest {
     void placeItem_oneItem() {
         Tile tile = new Tile(1, 0);
         Item item = mock(Item.class);
-        assertNull(tile.getItem());
+
         boolean successFullyPlaced = tile.placeItem(item);
+
         assertTrue(successFullyPlaced);
         assertEquals(tile.getItem(), item);
     }
@@ -63,9 +65,10 @@ public class TileTest {
         Tile tile = new Tile(1, 0);
         Item item1 = mock(Item.class);
         Item item2 = mock(Item.class);
-        assertNull(tile.getItem());
+
         tile.placeItem(item1);
         boolean successFullyPlaced = tile.placeItem(item2);
+
         assertFalse(successFullyPlaced);
         assertEquals(tile.getItem(), item1);
     }
@@ -73,8 +76,11 @@ public class TileTest {
     @Test
     void pickUpItem_noItemAndNoSnowOnTile() {
         Tile tile = new Tile(1, 0);
+
         Player player = mock(Player.class);
         tile.pickUpItem(player);
+
+        verifyNoMoreInteractions(player);
     }
 
     @Test
@@ -117,6 +123,74 @@ public class TileTest {
     }
 
     @Test
+    void getSnow_simple() {
+        Tile tile = new Tile(1, 4);
+
+        assertEquals(4, tile.getSnow());
+    }
+
+    @Test
+    void addSnow_simple() {
+        Tile tile = new Tile(1, 3);
+
+        tile.addSnow(2);
+
+        assertEquals(5, tile.getSnow());
+    }
+
+    @Test
+    void removeSnow_noSnowMinusOne() {
+        Tile tile = new Tile(1, 0);
+
+        tile.removeSnow(1);
+
+        assertEquals(0, tile.getSnow());
+    }
+
+    @Test
+    void removeSnow_hasSnowMinusLessThanAll() {
+        Tile tile = new Tile(1, 3);
+
+        tile.removeSnow(2);
+
+        assertEquals(1, tile.getSnow());
+    }
+
+    @Test
+    void removeSnow_hasSnowMinusAll() {
+        Tile tile = new Tile(1, 4);
+
+        tile.removeSnow(4);
+
+        assertEquals(0, tile.getSnow());
+    }
+
+    @Test
+    void removeSnow_hasSnowMinusMoreThanAll() {
+        Tile tile = new Tile(1, 4);
+
+        tile.removeSnow(7);
+
+        assertEquals(0, tile.getSnow());
+    }
+
+    @Test
+    void revealCapacity_notRevealed() {
+        Tile tile = new Tile(1, 1);
+
+        assertFalse(tile.is_capacity_known);
+    }
+
+    @Test
+    void revealCapacity_revealed() {
+        Tile tile = new Tile(1, 1);
+
+        tile.revealCapacity();
+
+        assertTrue(tile.is_capacity_known);
+    }
+
+    @Test
     void updateViews_withOneView() {
         Tile tile = new Tile(1, 1);
         IView view1 = mock(IView.class);
@@ -138,6 +212,36 @@ public class TileTest {
         verify(view2, times(1)).subjectChanged();
         verifyNoMoreInteractions(view1);
         verifyNoMoreInteractions(view2);
+    }
+
+    @Test
+    void buildTent_notBuilt() {
+        Tile tile = new Tile(1, 2);
+
+        assertNotNull(NoBuilding.class);
+        assertEquals(NoBuilding.class, tile.getBuilding().getClass());
+    }
+
+    @Test
+    void buildTent_built() {
+        Tile tile = new Tile(1, 1);
+        Building b = mock(Building.class);
+
+        tile.setBuilding(b);
+
+        assertEquals(b, tile.getBuilding());
+    }
+
+    @Test
+    void storm_mockBuildingOnStorm() {
+        Tile tile = new Tile(1, 2);
+        Building b = mock(Building.class);
+        tile.setBuilding(b);
+
+        tile.storm();
+
+        verify(b, times(1)).onStorm(tile.creatures);
+        verifyNoMoreInteractions(b);
     }
 
 }
