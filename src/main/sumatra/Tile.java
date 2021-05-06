@@ -129,8 +129,8 @@ public class Tile implements Printable, IViewable {
     }
 
     /**
-     * Visszaadja a mezőn álló adott indexű szereplőt
-     * @return az egyik szereplő a táblán
+     * @return A lényeket tartalmazó listából visszaadja a listában a megfelelő indexen levő lényt.
+     * Fontos: az index itt nem a lény indexét, hanem a listában való helyét jelőli a lénynek.
      */
     public Creature getCreature(int i) {
         return creatures.get(i);
