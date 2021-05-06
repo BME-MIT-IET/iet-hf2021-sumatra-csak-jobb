@@ -1,7 +1,6 @@
 package sumatra;
 
 import graphics.IView;
-import jdk.jshell.spi.ExecutionControl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
