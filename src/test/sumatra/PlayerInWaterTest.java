@@ -2,7 +2,6 @@ package sumatra;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class PlayerInWaterTest {
@@ -38,25 +37,13 @@ public class PlayerInWaterTest {
     }
 
     @Test
-    public void saveMe_noRope(){
+    public void saveMe(){
+        Rope r = mock(Rope.class);
+        p2.addRope(r);
 
         p2.saveMe(p1, t1);
 
-        assertNotEquals(p2.getTile(), p1.getTile());
-    }
-
-    @Test
-    public void saveMe_hasRope(){
-        p2.addRope(new BasicRope());
-
-        p2.saveMe(p1, t1);
-
-        assertEquals(t2, p1.getTile());
-        assertEquals(t2, p2.getTile());
-        assertTrue(t2.creatures.contains(p1));
-        assertTrue(t2.creatures.contains(p2));
-        assertFalse(t1.creatures.contains(p1));
-        assertFalse(t1.creatures.contains(p2));
+        verify(r).save(p1, t1, t2);
     }
 
     @Test
