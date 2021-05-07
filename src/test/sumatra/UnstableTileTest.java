@@ -39,7 +39,6 @@ public class UnstableTileTest {
         verify(c1, never()).fallInWater();
         verify(c2, never()).fallInWater();
         verify(c3, never()).fallInWater();
-
     }
 
     @Test

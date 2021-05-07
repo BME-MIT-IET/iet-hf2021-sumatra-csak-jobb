@@ -15,37 +15,72 @@ public class TileTest {
     @Test
     void accept_noCreatures() {
         Tile tile = new Tile(1, 1);
+
         assertTrue(tile.creatures.isEmpty());
-        assertNull(tile.getCreature(1)); //TODO: Issue #6
     }
 
     @Test
     void accept_oneCreature() {
         Tile tile = new Tile(1, 1);
         Creature c = mock(Creature.class);
-        c.index = 3;
+
         tile.accept(c);
-        assertNotNull(tile.getCreature(3)); //TODO: Issue #6
+
+        assertTrue(tile.creatures.contains(c)); //TODO: Issue #6
     }
 
     @Test
     void accept_moreCreatures() {
-        //TODO
+        Tile tile = new Tile(1, 1);
+        Creature c1 = mock(Creature.class);
+        Creature c2 = mock(Creature.class);
+
+        tile.accept(c1);
+        tile.accept(c2);
+
+        assertTrue(tile.creatures.contains(c1));
+        assertTrue(tile.creatures.contains(c2));
     }
 
     @Test
     void remove_playerOnTile() {
-        //TODO
+        Tile tile = new Tile(1, 1);
+        Creature c1 = mock(Creature.class);
+        Creature c2 = mock(Creature.class);
+        tile.accept(c1);
+        tile.accept(c2);
+
+        tile.remove(c1);
+
+        assertFalse(tile.creatures.contains(c1)); // TODO: getCreatures()
+        assertTrue(tile.creatures.contains(c2));
     }
 
     @Test
     void remove_playerNotOnTile() {
-        //TODO
+        Tile tile = new Tile(1, 1);  // TODO: Visszateresi ertek legyen bool / dobjon exceptiont
+        Creature c1 = mock(Creature.class);
+        Creature c2 = mock(Creature.class);
+
+        tile.accept(c1);
+
+        assertTrue(tile.creatures.contains(c1));
+        assertFalse(tile.creatures.contains(c2));
     }
 
     @Test
     void clearCreatures_simple() {
-        //TODO
+        Tile tile = new Tile(1, 1);
+        Creature c1 = mock(Creature.class);
+        Creature c2 = mock(Creature.class);
+        Creature c3 = mock(Creature.class);
+
+        tile.accept(c1);
+        tile.accept(c2);
+        tile.accept(c3);
+        tile.clearCreatures();
+
+        assertTrue(tile.creatures.isEmpty());
     }
 
     @Test
@@ -273,6 +308,17 @@ public class TileTest {
         assertTrue(tile.isNeighbor(n));
         assertTrue(n.getNeighbors().contains(tile));    // TODO: kolcsonosseg
         assertTrue(n.isNeighbor(tile));                 //
+    }
+
+    @Test
+    void addNeighbor_oneNeighborTwice() {
+        Tile tile = new Tile(1, 1);
+        Tile n = new Tile(2,2);
+
+        tile.addNeighbor(n);
+        tile.addNeighbor(n);
+
+        assertEquals(1, tile.getNeighbors().size()); // Todo: Mi van, ha valaki ketszer adja hozza a cuccot?
     }
 
     @Test
