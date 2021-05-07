@@ -5,18 +5,19 @@ import org.openjdk.jmh.annotations.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-@BenchmarkMode(Mode.AverageTime)
+@BenchmarkMode(Mode.All)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @Fork(value = 2, jvmArgs = {"-Xms2G", "-Xmx2G"})
-@State(Scope.Benchmark)
+@State(Scope.Thread)
+@Measurement(iterations = 3)
+@Warmup(iterations = 2)
 public class LoadBenchmark {
     ArrayList<String> configure;
+    @Param({"10", "100", "500", "1000"})
     int size = 0;
     World w;
     @Setup(Level.Trial)
     public void generateMap() {
-        final int size = 10;
-        this.size = size;
         System.out.println("Generate Map: " + size);
         w = World.getInstance();
         configure = new ArrayList<>();
@@ -31,7 +32,7 @@ public class LoadBenchmark {
     }
 
     @Benchmark
-    public void LoadMap10() {
+    public void LoadMap() {
         w.generateTilesFrom(configure, size, size*(size-1)/2);
     }
 }
