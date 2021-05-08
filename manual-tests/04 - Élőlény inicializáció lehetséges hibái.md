@@ -13,7 +13,7 @@ Az élőlény inicializálás működését ellenőrzi a lehetséges hibákon ke
 | Lépés # | Leírás | Várt eredmény |
 | ------- | ------ | ------------- |
 | 1. | Hozz létre értelmes keretek között sok eszkimó példányt! (`Eskimo 0`, majd `Add Creature` sokszor, 20-30-szor.) Végül kattints az `OK` gombra! | Létrejön az összes példány: a bal oldali `Creatures` sávban görgetve látszik a sok példány, illetve a játéktérben a mezőn látszik a játékosok egy része. |
-| 2. Hozz létre példaélőlényeket, például az előző lépés elvégzésével! Ezután nyisd meg újra az élőlény inicializáló menüt, és kattints bármiféle egyéb beállítás nélkül az `OK` gombra! | A korábban létrehozott élőlények eltűnnek a játéktérről, az összes mező, illetve a bal oldali `Creatures` panel üres. |
+| 2. | Hozz létre példaélőlényeket, például az előző lépés elvégzésével! Ezután nyisd meg újra az élőlény inicializáló menüt, és kattints bármiféle egyéb beállítás nélkül az `OK` gombra! | A korábban létrehozott élőlények eltűnnek a játéktérről, az összes mező, illetve a bal oldali `Creatures` panel üres. |
 
 ## Megjegyzések
 
