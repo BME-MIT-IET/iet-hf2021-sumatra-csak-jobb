@@ -1,4 +1,4 @@
-# 06 - Élőlény inicializáció sanity check
+# 03 - Élőlény inicializáció sanity check
 
 Az élőlény inicializálás alapvető működését ellenőrzi.
 
