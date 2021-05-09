@@ -182,7 +182,7 @@ public class Tile implements Printable, IViewable {
     }
 
     /**
-     * Hozzáad egy táblát a szomszédokhoZ
+     * Hozzáad egy táblát a szomszédokhoz. A szomszédosság kölcsönösségét nem biztosítja.
      * @param t A szomszéd tábla
      */
     public void addNeighbor(Tile t) {

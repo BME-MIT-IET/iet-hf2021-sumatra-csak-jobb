@@ -26,7 +26,7 @@ public class TileTest {
 
         tile.accept(c);
 
-        assertTrue(tile.creatures.contains(c)); //TODO: Issue #6
+        assertTrue(tile.creatures.contains(c));
     }
 
     @Test
@@ -52,7 +52,7 @@ public class TileTest {
 
         tile.remove(c1);
 
-        assertFalse(tile.creatures.contains(c1)); // TODO: getCreatures()
+        assertFalse(tile.creatures.contains(c1));
         assertTrue(tile.creatures.contains(c2));
     }
 
@@ -306,8 +306,6 @@ public class TileTest {
 
         assertTrue(tile.getNeighbors().contains(n));
         assertTrue(tile.isNeighbor(n));
-        assertTrue(n.getNeighbors().contains(tile));    // TODO: kolcsonosseg
-        assertTrue(n.isNeighbor(tile));                 //
     }
 
     @Test
