@@ -29,6 +29,10 @@ sourceSets {
     }
 }
 
+jmh {
+    resultFormat = 'JSON'
+}
+
 // Additional configuration: tests
 test {
     useJUnitPlatform()

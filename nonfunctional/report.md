@@ -45,46 +45,11 @@ Az eszközzel továbbá az alábbi opciókat tudjuk megadni a benchmark futtatá
 Az `src/jmh/java/sumatra/LoadBenchmark` a kódból történő játékbetöltést vizsgálja: a mezők hozzáadása és a szomszédsággi viszonyok kiépítése mennyi ideig tart különböző beállításokkal, továbbá néhány karaktert is elhelyez a mezőkön.
 
 Ennek az eredménye látható a `nonfunctional/bigmap/results.txt` fájlban. Az átlagos futási időt szeretném kiemelni:
-```text
-Benchmark              (creaturescount)  (tilescount)   Mode  Cnt     Score     Error   Units
-LoadBenchmark.LoadMap                10            10   avgt    6     0,010 ±   0,001   ms/op
-LoadBenchmark.LoadMap                10           100   avgt    6     0,705 ±   0,143   ms/op
-LoadBenchmark.LoadMap                10           250   avgt    6     4,351 ±   0,790   ms/op
-LoadBenchmark.LoadMap                10           500   avgt    6    18,612 ±   5,423   ms/op
-LoadBenchmark.LoadMap                10          1000   avgt    6    76,514 ±   6,156   ms/op
-LoadBenchmark.LoadMap                10          5000   avgt    6  2704,988 ± 548,049   ms/op
-LoadBenchmark.LoadMap               100            10   avgt    6     0,027 ±   0,003   ms/op
-LoadBenchmark.LoadMap               100           100   avgt    6     0,655 ±   0,044   ms/op
-LoadBenchmark.LoadMap               100           250   avgt    6     4,002 ±   0,246   ms/op
-LoadBenchmark.LoadMap               100           500   avgt    6    16,612 ±   0,383   ms/op
-LoadBenchmark.LoadMap               100          1000   avgt    6    72,511 ±  12,560   ms/op
-LoadBenchmark.LoadMap               100          5000   avgt    6  2184,867 ± 210,179   ms/op
-LoadBenchmark.LoadMap               250            10   avgt    6     0,072 ±   0,034   ms/op
-LoadBenchmark.LoadMap               250           100   avgt    6     0,712 ±   0,050   ms/op
-LoadBenchmark.LoadMap               250           250   avgt    6     4,060 ±   0,196   ms/op
-LoadBenchmark.LoadMap               250           500   avgt    6    16,945 ±   1,294   ms/op
-LoadBenchmark.LoadMap               250          1000   avgt    6    70,936 ±   2,729   ms/op
-LoadBenchmark.LoadMap               250          5000   avgt    6  2175,963 ± 205,822   ms/op
-LoadBenchmark.LoadMap               500            10   avgt    6     0,165 ±   0,022   ms/op
-LoadBenchmark.LoadMap               500           100   avgt    6     0,776 ±   0,051   ms/op
-LoadBenchmark.LoadMap               500           250   avgt    6     4,141 ±   0,619   ms/op
-LoadBenchmark.LoadMap               500           500   avgt    6    16,220 ±   1,380   ms/op
-LoadBenchmark.LoadMap               500          1000   avgt    6    66,604 ±   1,264   ms/op
-LoadBenchmark.LoadMap               500          5000   avgt    6  2173,017 ± 219,286   ms/op
-LoadBenchmark.LoadMap              1000            10   avgt    6     0,532 ±   0,014   ms/op
-LoadBenchmark.LoadMap              1000           100   avgt    6     1,135 ±   0,009   ms/op
-LoadBenchmark.LoadMap              1000           250   avgt    6     4,460 ±   0,023   ms/op
-LoadBenchmark.LoadMap              1000           500   avgt    6    16,668 ±   0,487   ms/op
-LoadBenchmark.LoadMap              1000          1000   avgt    6    66,908 ±   1,934   ms/op
-LoadBenchmark.LoadMap              1000          5000   avgt    6  2040,818 ± 301,271   ms/op
-LoadBenchmark.LoadMap              5000            10   avgt    6    20,133 ±   2,767   ms/op
-LoadBenchmark.LoadMap              5000           100   avgt    6    22,203 ±   6,498   ms/op
-LoadBenchmark.LoadMap              5000           250   avgt    6    26,105 ±   4,633   ms/op
-LoadBenchmark.LoadMap              5000           500   avgt    6    43,156 ±   8,731   ms/op
-LoadBenchmark.LoadMap              5000          1000   avgt    6   102,020 ±   6,710   ms/op
-LoadBenchmark.LoadMap              5000          5000   avgt    6  2820,778 ± 252,380   ms/op
-```
 
-Jól látható hogy a mezők beállítása tartott nagyon sokáig a létrehozott karakterek számától függetlenül, hiszen a szomszédsággi viszonyok száma `n*n` komplexitású `n` db mező esetén. 
+A kék-zöld árnyalatok a létrehozott mezők számához viszonyítja az átlagos futási időt, az első képen 10 db karakter létrehozásával, míg a 2. képen már 5000 db karakter létrehozása történt. (A skála logaritmikus)
+![Results with Creature 10](creature10.png)
+![Results with Creature 5000](creature5000.png)
+
+Jól látható hogy a mezők beállítása tartott nagyon sokáig a létrehozott karakterek számától függetlenül, hiszen a szomszédsággi viszonyok száma `n*n` komplexitású `n` db mező esetén. A karakterek száma csak a kapott értékek szorását befolyásolták minimálisan. 
 
 

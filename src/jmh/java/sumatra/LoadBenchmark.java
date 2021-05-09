@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-@BenchmarkMode({Mode.Throughput, Mode.SingleShotTime, Mode.AverageTime})
+@BenchmarkMode({Mode.AverageTime})
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @Fork(value = 2, jvmArgs = {"-Xms2G", "-Xmx2G"})
 @State(Scope.Thread)
