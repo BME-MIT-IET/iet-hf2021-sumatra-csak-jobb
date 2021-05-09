@@ -13,6 +13,9 @@ A játik inicializálása után a felvett mezőktől függően előfordulhat oly
 
 Ha a felhasználó maga akarja átrendezni a játékteret, akkor azt a szokványos egérmozdulatokkal megteheti. Viszont ha a felhasználó felfele vagy balra húzza a mezőket és kihúzza őket az ablakból, akkor azok már nem rendezhetőek vissza, mert a keret nem követi le a mozgásukat.
 
+Ilyen eset látható a lenti képen, egy mező ki lett húzva a keretből, azt már nem lehet visszaállítani.
+![UI Bug](bug.png)
+
 Ha a játékban 9-nél tőbb karakter van és ezek mind egy táblán vannak, akkor csak az utolsó 9 karakter jeleníthető meg a mezőn. Illetve a részletező oldalon sem látható, hogy a többi karakter pontosan hol, melyik mezően áll, esetleg ugyanazon. 
 
 ### Betöltés
@@ -50,6 +53,6 @@ A kék-zöld árnyalatok a létrehozott mezők számához viszonyítja az átlag
 ![Results with Creature 10](creature10.png)
 ![Results with Creature 5000](creature5000.png)
 
-Jól látható hogy a mezők beállítása tartott nagyon sokáig a létrehozott karakterek számától függetlenül, hiszen a szomszédsággi viszonyok száma `n*n` komplexitású `n` db mező esetén. A karakterek száma csak a kapott értékek szorását befolyásolták minimálisan. 
+Jól látható hogy a mezők beállítása tartott nagyon sokáig a létrehozott karakterek számától függetlenül, hiszen a szomszédsággi viszonyok száma `n*n` komplexitású `n` db mező esetén. A karakterek száma csak a kapott értékek szorását befolyásolta minimálisan. 
 
 
