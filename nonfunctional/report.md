@@ -9,7 +9,7 @@ Mezők hozzáadásánál mindkét számbeviteli mező esetén egy bug vehető é
 A felhasználók szempontjából jobb lenne ha az előző bekezdésben említett beviteli mezők esetén megjeleníteni, melyik mire vonatkozik: az egyikkel a táblamezőt fedő hóvastagság, a másik beviteli mezővel pedig a teherbírását lehet beállítani. Ugyanakkor ez a lehetőség csak _unstable tile_ esetén kell, így be lehetne állítani, hogy csak ez esetben lehssen ezt az opciót megadni.
 
 ### Játéktér
-A játik inicializálása után a felvett mezőktől függően előfordulhat olyan megjelenítés, amikor az egyes szomszédsági viszonyok nem láthatóak a mezők elhelyezkedése miatt. Érdemesebb valamilyen síkbarajzoló algoritmust felhasználni ezek elrendezésére. 
+A játék inicializálása után a felvett mezőktől függően előfordulhat olyan megjelenítés, amikor az egyes szomszédsági viszonyok nem láthatóak a mezők elhelyezkedése miatt. Érdemesebb valamilyen síkbarajzoló algoritmust felhasználni ezek elrendezésére. 
 
 Ha a felhasználó maga akarja átrendezni a játékteret, akkor azt a szokványos egérmozdulatokkal megteheti. Viszont ha a felhasználó felfele vagy balra húzza a mezőket és kihúzza őket az ablakból, akkor azok már nem rendezhetőek vissza, mert a keret nem követi le a mozgásukat.
 
@@ -49,10 +49,8 @@ Az `src/jmh/java/sumatra/LoadBenchmark` a kódból történő játékbetöltést
 
 Ennek az eredménye látható a `nonfunctional/bigmap/results.txt` fájlban. Az átlagos futási időt szeretném kiemelni:
 
-A kék-zöld árnyalatok a létrehozott mezők számához viszonyítja az átlagos futási időt, az első képen 10 db karakter létrehozásával, míg a 2. képen már 5000 db karakter létrehozása történt. (A skála logaritmikus)
+A kék-zöld árnyalatok a létrehozott mezők számához viszonyítja az átlagos futási időt, az első képen 10 db karakter létrehozásával, míg a 2. képen már 5000 db karakter létrehozása történt. (A skála logaritmikus, diagram ezzel a porgrammal készült: [jmh.morethan.io](https://jmh.morethan.io/))
 ![Results with Creature 10](creature10.png)
 ![Results with Creature 5000](creature5000.png)
 
 Jól látható hogy a mezők beállítása tartott nagyon sokáig a létrehozott karakterek számától függetlenül, hiszen a szomszédsággi viszonyok száma `n*n` komplexitású `n` db mező esetén. A karakterek száma csak a kapott értékek szorását befolyásolta minimálisan. 
-
-
