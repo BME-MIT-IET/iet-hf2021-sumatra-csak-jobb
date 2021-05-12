@@ -3,6 +3,8 @@
 Rövid leírás arról, hogy mit is csinál a teszt.
 
 ## Bemeneti adatok
+*Bizonyos lépéseknél szükség van nagyobb mennyiségű bemeneti adatra.
+Ezek az átláthatóság kedvéért ebben a részben vannak felsorolva.*
 
 1. adat, vagy itt részletezve, vagy belinkelve.
 2. adat, stb.
