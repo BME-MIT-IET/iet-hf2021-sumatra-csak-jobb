@@ -312,17 +312,6 @@ public class TileTest {
     }
 
     @Test
-    void addNeighbor_oneNeighborTwice() {
-        Tile tile = new Tile(1, 1);
-        Tile n = new Tile(2,2);
-
-        tile.addNeighbor(n);
-        tile.addNeighbor(n);
-
-        assertEquals(1, tile.getNeighbors().size()); // Todo: Mi van, ha valaki ketszer adja hozza a cuccot?
-    }
-
-    @Test
     void addNeighbor_moreNeighbor() {
         Tile tile = new Tile(1, 2);
         Tile n1 = new Tile(2, 3);
