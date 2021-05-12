@@ -157,6 +157,7 @@ public class Tile implements Printable, IViewable {
 
     /**
      * Elfogadja a táblára lépő élőlényt
+     * precondition: A lény nincs rajta még a jégmezőn
      * @param c A táblára lépő élőlény
      */
     public void accept(Creature c) {
@@ -168,10 +169,13 @@ public class Tile implements Printable, IViewable {
     /**
      * Eltávolítja a Tábláról a élőlényt
      * @param c Az eltávolítandő élőlény
+     * @return Sikeres volt-e a lény eltávolítása a tábláról. Amennyiben nem is volt a lény a mezőn,
+     * akkor hamis a visszatérési érték.
      */
-    public void remove(Creature c) {
-        creatures.remove(c);
+    public boolean remove(Creature c) {
+        boolean res = creatures.remove(c);
         updateViews();
+        return res;
     }
 
     /**
