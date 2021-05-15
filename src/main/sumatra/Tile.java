@@ -107,7 +107,7 @@ public class Tile implements Printable, IViewable {
     }
 
     /**
-     * Visszadja a szomszédos mezőket
+     * Visszadja a szomszédos mezőket. Nem készít másolatot a szomszédok listájáról, ne változtasd  (Demeter).
      * @return A szomszédos mezők tömbje
      */
     public ArrayList<Tile> getNeighbors() {
