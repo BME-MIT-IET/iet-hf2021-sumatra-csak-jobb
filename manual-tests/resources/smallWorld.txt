@@ -1,0 +1,22 @@
+worlddata
+    step 0
+    activeplayer none
+    flareparts 0
+tiles 3
+    0 stable 0 n none beacon 
+    1 unstable 0 n none basicrope 3
+    2 hole 0 n none none 
+tilelinks 3
+    0 1
+    0 2
+    1 2
+creatures 3
+    0 eskimo 0 5 4
+        rope none
+        suit none
+        usableitems 0
+    1 researcher 0 5 4
+        rope none
+        suit none
+        usableitems 0
+    2 polarbear 1
