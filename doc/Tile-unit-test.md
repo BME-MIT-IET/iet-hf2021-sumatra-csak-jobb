@@ -25,4 +25,9 @@ Ha egy, a jégmezőn levő lényt eltávolítunk onnan, akkor ez eltűnik róla.
 
 Tile.remove(Creature)
 
+### Esetek:
+
+* A lény a mezőn van
+* A lény nincs a mezőn
+
 
