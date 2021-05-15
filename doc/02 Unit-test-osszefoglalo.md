@@ -18,7 +18,7 @@ Mivel a házi feladat által vizsgált projekt Java nyelven íródott, így JUni
 
 * A unit tesztek automatizáltak, így sok könnyebbséget ad a fejlesztőknek.
 
-* Sikerült elérni .......%-os kódsor lefedettségi metrikát. Ez az arány azért nem magas, mivel a kódban jelentősen keverednek a betöltési/mentési funkciók és a modell logikája. Ez nem jó, a projektnek talán ez a legnagyobb hátulütője. A modell függvényeinek tesztelése részletes és tudatos tervezés eredménye, ami nagyobb bizonyosságot ad arról, hogy az osztályok implementációja helyes. A unit tesztekkel nem tesztelhető részeket manuális illetve félautomatizált módon teszteltük.
+* Kb. 90 unit teszt készült. A kódlefedettségi metrika azért nem magas, mivel a kódban jelentősen keverednek a betöltési/mentési funkciók és a modell logikája. Ez nem jó, a projektnek talán ez a legnagyobb hibája. A modell függvényeinek tesztelése részletes és tudatos tervezés eredménye, ami nagyobb bizonyosságot ad arról, hogy az osztályok implementációja helyes. A unit tesztekkel nem tesztelhető részeket manuális illetve félautomatizált módon teszteltük.
 
 * A projekthez korábbi félévekben készült dokumentáció illetve a kódban lévő kommentezés több helyen hiányos volt. Így a szerződések nem voltak többször egyértelműek. A tesztelés segített egyértelműsíteni, hogy milyen szerződései legyenek egyes osztályok bizonyos függvényeinek.
 
