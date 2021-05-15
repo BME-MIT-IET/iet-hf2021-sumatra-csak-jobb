@@ -18,9 +18,13 @@ Mivel a házi feladat által vizsgált projekt Java nyelven íródott, így JUni
 
 * A unit tesztek automatizáltak, így sok könnyebbséget ad a fejlesztőknek.
 
-* Sikerült elérni .......%-os kódsor lefedettségi metrikát.
+* Sikerült elérni .......%-os kódsor lefedettségi metrikát. Ez az eredmény és a tudatos teszttervezés nagyobb bizonyosságot ad arról, hogy az osztályok implemetációja helyes.
 
 * A projekthez korábbi félévekben készült dokumentáció illetve a kódban lévő kommentezés több helyen hiányos volt. Így a szerződések nem voltak többször egyértelműek. A tesztelés segített egyértelműsíteni, hogy milyen szerződései legyenek egyes osztályok bizonyos függvényeinek.
 
-## Példák javításokra
+* A unit tesztek segítségével könnyebb refaktorálásokat elvégezni a projekten a későbbiekben.
+
+## Ajánlások
+
+* A World jelenleg isten-osztály. Ennek az az oka, hogy ebben az osztályban (és több másik osztályban is) jelentősen keveredik a betöltés logikája a modell logikájával. Érdemes lenne ezeket különválasztani. 
 
