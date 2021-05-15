@@ -34,6 +34,8 @@ public class PlayerInWaterTest {
         p1.fallInWater();
 
         verify(p2).saveMe(p1, t1);
+        verify(p1, never()).decreaseMana();
+        verify(p2, never()).decreaseMana();
     }
 
     @Test
@@ -44,6 +46,8 @@ public class PlayerInWaterTest {
         p2.saveMe(p1, t1);
 
         verify(r).save(p1, t1, t2);
+        verify(p1, never()).decreaseMana();
+        verify(p2, never()).decreaseMana();
     }
 
     @Test

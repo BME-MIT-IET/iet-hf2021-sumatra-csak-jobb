@@ -7,6 +7,28 @@ import static org.mockito.Mockito.*;
 public class ItemTest {
 
     @Test
+    void pickUpItem() {
+        Tile t = mock(Tile.class);
+        Player p = spy(new Researcher(t, 0));
+
+        p.pickUpItem();
+
+        verify(t).pickUpItem(p);
+        verify(p).decreaseMana();
+    }
+
+    @Test
+    void pickUpItem_noMana() {
+        Tile t = mock(Tile.class);
+        Player p = new Researcher(t, 0);
+        p.mana = 0;
+
+        p.pickUpItem();
+
+        verify(t, never()).pickUpItem(p);
+    }
+
+    @Test
     public void giveBasicRope(){
         Player p = mock(Player.class);
         Rope r = new BasicRope();
@@ -52,34 +74,27 @@ public class ItemTest {
     @Test
     public void useUsableItem(){
         Tile t = mock(Tile.class);
-        Player p = new Researcher(t, 0);
+        Player p = spy(new Eskimo(t, 0));
         UsableItem i = mock(UsableItem.class);
         p.addUsableItem(i);
 
         p.useItem(0, t);
 
         verify(i).use(t);
+        verify(p).decreaseMana();
     }
 
     @Test
-    public void useBasicRope(){
-        Tile t1 = new Tile(0, 0);
-        Tile t2 = new Tile(1, 0);
-        Player p1 = new Researcher(t1, 0);
-        Player p2 = new Eskimo(t2, 1);
-        t1.accept(p1);
-        t2.accept(p2);
-        Rope r = new BasicRope();
-        r.giveToPlayer(p2);
+    public void useUsableItem_noMana(){
+        Tile t = mock(Tile.class);
+        Player p = new Eskimo(t, 0);
+        p.mana = 0;
+        UsableItem i = mock(UsableItem.class);
+        p.addUsableItem(i);
 
-        r.save(p1, p1.getTile(), p2.getTile());
+        p.useItem(0, t);
 
-        assertEquals(t2, p1.getTile());
-        assertEquals(t2, p2.getTile());
-        assertTrue(t2.creatures.contains(p1));
-        assertTrue(t2.creatures.contains(p2));
-        assertFalse(t1.creatures.contains(p1));
-        assertFalse(t1.creatures.contains(p2));
+        verify(i, never()).use(t);
     }
 
     @Test
@@ -121,6 +136,27 @@ public class ItemTest {
 
         verify(t).setBuilding(any(Tent.class));
         assertFalse(p.getItems().contains(e));
+    }
+
+    @Test
+    public void useBasicRope(){
+        Tile t1 = new Tile(0, 0);
+        Tile t2 = new Tile(1, 0);
+        Player p1 = new Researcher(t1, 0);
+        Player p2 = new Eskimo(t2, 1);
+        t1.accept(p1);
+        t2.accept(p2);
+        Rope r = new BasicRope();
+        r.giveToPlayer(p2);
+
+        r.save(p1, p1.getTile(), p2.getTile());
+
+        assertEquals(t2, p1.getTile());
+        assertEquals(t2, p2.getTile());
+        assertTrue(t2.creatures.contains(p1));
+        assertTrue(t2.creatures.contains(p2));
+        assertFalse(t1.creatures.contains(p1));
+        assertFalse(t1.creatures.contains(p2));
     }
 
 }

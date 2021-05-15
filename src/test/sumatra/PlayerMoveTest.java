@@ -3,6 +3,7 @@ package sumatra;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class PlayerMoveTest {
 
@@ -13,7 +14,7 @@ public class PlayerMoveTest {
     public void init(){
         t0 = new Tile(0, 0);
         t1 = new Tile(1, 0);
-        p = new Eskimo(t0, 0);
+        p = spy(new Eskimo(t0, 0));
         t0.accept(p);
     }
 
@@ -26,6 +27,7 @@ public class PlayerMoveTest {
         assertEquals(t1, p.getTile());
         assertTrue(t1.creatures.contains(p));
         assertFalse(t0.creatures.contains(p));
+        verify(p).decreaseMana();
     }
 
     @Test
@@ -36,10 +38,11 @@ public class PlayerMoveTest {
         assertEquals(t0, p.getTile());
         assertTrue(t0.creatures.contains(p));
         assertFalse(t1.creatures.contains(p));
+        verify(p, never()).decreaseMana();
     }
 
     @Test
-    public void move_noMana(){
+    public void move_neighborNoMana(){
         t0.addNeighbor(t1);
         p.mana = 0;
 
@@ -52,6 +55,18 @@ public class PlayerMoveTest {
 
     @Test
     public void forceMove(){
+        t0.addNeighbor(t1);
+
+        p.forceMove(t1);
+
+        assertEquals(t1, p.getTile());
+        assertTrue(t1.creatures.contains(p));
+        assertFalse(t0.creatures.contains(p));
+        verify(p, never()).decreaseMana();
+    }
+
+    @Test
+    public void forceMove_noMana(){
         t0.addNeighbor(t1);
         p.mana = 0;
 

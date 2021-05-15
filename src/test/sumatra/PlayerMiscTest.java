@@ -17,9 +17,17 @@ public class PlayerMiscTest {
     }
 
     @Test
-    public void dig(){
-        p.dig();
-        verify(t).removeSnow(1);
+    public void decreaseMana(){
+        p.mana = 3;
+        p.decreaseMana();
+        assertEquals(2, p.mana);
+    }
+
+    @Test
+    public void replenishMana(){
+        p.mana = 0;
+        p.playRound();
+        assertEquals(4, p.mana);
     }
 
     @Test
@@ -37,10 +45,18 @@ public class PlayerMiscTest {
     }
 
     @Test
-    public void replenishMana(){
+    public void dig(){
+        Player p = spy(this.p);
+        p.dig();
+        verify(t).removeSnow(1);
+        verify(p).decreaseMana();
+    }
+
+    @Test
+    public void dig_noMana(){
         p.mana = 0;
-        p.playRound();
-        assertEquals(4, p.mana);
+        p.dig();
+        verify(t, never()).removeSnow(anyInt());
     }
 
 }
