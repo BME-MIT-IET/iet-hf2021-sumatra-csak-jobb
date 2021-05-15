@@ -49,7 +49,7 @@ Az eszközzel továbbá az alábbi opciókat tudjuk megadni a benchmark futtatá
 A tesztet a gradle `jmhJar` taszk használata után futtatható. A teszt futása körülbelül 1 órát vesz igénybe. 
 
 ### A játék inicializálásának mérése
-A lenti eredmények _I7 8850_ processzor és _16 GB 24000MHz_ memória konfiguráció mellett született.
+A lenti eredmények _I7 8850_ processzor és _16 GB 24000Mhz_ memória konfiguráció mellett született.
 
 Az `src/jmh/java/sumatra/LoadBenchmark` a kódból történő játékbetöltést vizsgálja: a mezők hozzáadása és a szomszédsággi viszonyok kiépítése mennyi ideig tart különböző beállításokkal, továbbá néhány karaktert is elhelyez a mezőkön.
 
