@@ -320,8 +320,6 @@ public class TileTest {
         tile.addNeighbor(n1);
         tile.addNeighbor(n2);
 
-        ArrayList<Tile> neighbors = tile.getNeighbors();
-
         assertTrue(tile.isNeighbor(n1));
         assertTrue(tile.isNeighbor(n2));
         assertFalse(n1.isNeighbor(n2));
