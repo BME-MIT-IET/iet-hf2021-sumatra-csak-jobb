@@ -1,6 +1,7 @@
 // Plugins and dependencies
 plugins {
     id 'application'
+    id "me.champeau.gradle.jmh" version "0.5.3"
 }
 
 repositories {
@@ -10,7 +11,9 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-    testCompile 'org.mockito:mockito-core:3.9.0'
+    jmh 'org.openjdk.jmh:jmh-core:0.9'
+    jmh 'org.openjdk.jmh:jmh-generator-annprocess:0.9'
+    testImplementation 'org.mockito:mockito-core:3.9.0'
 }
 
 // Project structure
@@ -23,8 +26,12 @@ sourceSets {
         srcDir 'src/main'
     }
     test.java {
-        srcDir 'src/test'
+        srcDir 'src/test/sumatra'
     }
+}
+
+jmh {
+    resultFormat = 'JSON'
 }
 
 // Additional configuration: tests
