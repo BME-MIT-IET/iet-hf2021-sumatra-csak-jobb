@@ -57,6 +57,20 @@ public class World implements Printable, IViewable {
     }
 
     /**
+     * precondition: nem lett még a lény hozzáadva a lények listájához.
+     * */
+    protected void addCreature(Creature c) {
+        creatures.add(c);
+    }
+
+    /**
+     * preconditionÉ nem lett még a mező hozzáadva a mezők lsitájához
+     * */
+    protected void addTile(Tile t) {
+        tiles.add(t);
+    }
+
+    /**
      * Ellenőrzi a játék végét, azaz vagy nyertek a játékosok, vagy veszítettek
      */
     public void checkEndGame() {
