@@ -107,7 +107,7 @@ public class Tile implements Printable, IViewable {
     }
 
     /**
-     * Visszadja a szomszédos mezőket
+     * Visszadja a szomszédos mezőket. Nem készít másolatot a szomszédok listájáról, ne változtasd  (Demeter).
      * @return A szomszédos mezők tömbje
      */
     public ArrayList<Tile> getNeighbors() {
@@ -129,8 +129,8 @@ public class Tile implements Printable, IViewable {
     }
 
     /**
-     * Visszaadja a mezőn álló adott indexű szereplőt
-     * @return az egyik szereplő a táblán
+     * @return A lényeket tartalmazó listából visszaadja a listában a megfelelő indexen levő lényt.
+     * Fontos: az index itt nem a lény indexét, hanem a listában való helyét jelőli a lénynek.
      */
     public Creature getCreature(int i) {
         return creatures.get(i);
@@ -157,6 +157,7 @@ public class Tile implements Printable, IViewable {
 
     /**
      * Elfogadja a táblára lépő élőlényt
+     * precondition: A lény nincs rajta még a jégmezőn
      * @param c A táblára lépő élőlény
      */
     public void accept(Creature c) {
@@ -168,10 +169,13 @@ public class Tile implements Printable, IViewable {
     /**
      * Eltávolítja a Tábláról a élőlényt
      * @param c Az eltávolítandő élőlény
+     * @return Sikeres volt-e a lény eltávolítása a tábláról. Amennyiben nem is volt a lény a mezőn,
+     * akkor hamis a visszatérési érték.
      */
-    public void remove(Creature c) {
-        creatures.remove(c);
+    public boolean remove(Creature c) {
+        boolean res = creatures.remove(c);
         updateViews();
+        return res;
     }
 
     /**
@@ -182,7 +186,8 @@ public class Tile implements Printable, IViewable {
     }
 
     /**
-     * Hozzáad egy táblát a szomszédokhoZ
+     * Hozzáad egy táblát a szomszédokhoz. A szomszédosság kölcsönösségét nem biztosítja.
+     * precondition: a mező még nem lett hozzáadva a szomszédokhoz
      * @param t A szomszéd tábla
      */
     public void addNeighbor(Tile t) {

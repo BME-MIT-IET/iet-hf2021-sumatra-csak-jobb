@@ -34,7 +34,7 @@ public class World implements Printable, IViewable {
      * Privát konstruktor - Mivel a World egy singleton, nem akarunk külsőleg példányt létrehozni
      * belőle. Viszont a tagváltozók inicializálására megfelelő.
      */
-    private World() {
+    protected World() {
         creatures = new ArrayList<>();
         flareParts = new ArrayList<>();
         tentplacements = new HashMap<>();
@@ -57,13 +57,28 @@ public class World implements Printable, IViewable {
     }
 
     /**
+     * precondition: nem lett még a lény hozzáadva a lények listájához.
+     * */
+    protected void addCreature(Creature c) {
+        creatures.add(c);
+    }
+
+    /**
+     * preconditionÉ nem lett még a mező hozzáadva a mezők lsitájához
+     * */
+    protected void addTile(Tile t) {
+        tiles.add(t);
+    }
+
+    /**
      * Ellenőrzi a játék végét, azaz vagy nyertek a játékosok, vagy veszítettek
+     * @return Véget ért-e a játék
      */
-    public void checkEndGame() {
+    public boolean checkEndGame() {
         if (flareParts.size() != 3) {
             System.out.println("> You don't have all 3 parts of the flare!");
             System.out.println("> Flare construction unsuccessful!");
-            return;
+            return false;
         }
         System.out.println("> You have all 3 parts of the flare.");
 
@@ -80,12 +95,13 @@ public class World implements Printable, IViewable {
         if (!sameTile) {
             System.out.println("> Not all players are standing on the same tile!");
             System.out.println("> Flare construction unsuccessful!");
-            return;
+            return false;
         }
         System.out.println("> All players are standing on the same tile.");
         System.out.println("> Flare construction successful!");
         System.out.println("> Congratulations, you won!");
         stop();
+        return true;
     }
 
     /**
@@ -665,7 +681,7 @@ public class World implements Printable, IViewable {
 
     /**
      * Visszatér az index-edik élőlénnyel.
-     * @param index Az élőlény sorszáma
+     * @param index Az élőlény sorszáma a listában
      * @return Az élőlény
      */
     public Creature getCreatureAt(int index) {
