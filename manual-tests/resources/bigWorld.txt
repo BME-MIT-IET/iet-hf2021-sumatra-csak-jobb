@@ -1,0 +1,35 @@
+worlddata
+    step 0
+    activeplayer none
+    flareparts 0
+tiles 10
+    0 stable 1 n none beacon 
+    1 stable 1 n none cartridge 
+    2 stable 1 n none gun 
+    3 stable 1 n none basicrope 
+    4 stable 1 n none basicdivingsuit 
+    5 stable 1 n none shovel 
+    6 stable 1 n none brokenshovel 
+    7 unstable 0 n none tent 3
+    8 unstable 1 n none food 3
+    9 hole 0 n none none 
+tilelinks 10
+    0 1
+    0 9
+    1 2
+    2 3
+    3 4
+    4 5
+    5 6
+    6 7
+    7 8
+    8 9
+creatures 2
+    0 eskimo 0 5 4
+        rope none
+        suit none
+        usableitems 0
+    1 researcher 0 5 4
+        rope none
+        suit none
+        usableitems 0
