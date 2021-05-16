@@ -48,7 +48,7 @@ Ezek az átláthatóság kedvéért ebben a részben vannak felsorolva.*
 1. Indítsd el az alkalmazás grafikus felületét!
 2. Végezd el a világ inicializálását az `Initialization -> Init World` menüpont alatt a fenti bemeneti adatokkal! Mindegyik adat után meg kell nyomni a releváns oszlopban lévő `Add` gombot, majd legvégül az `OK` gombot.
 3. Végezd el az élőlények inicializálását az `Initialization -> Init Creatures` menüpont alatt a fenti bemeneti adatokkal! Mindegyik adat után meg kell nyomni az `Add Creature` gombot, majd legvégül az `OK` gombot.
-4. Ezek után a játéktéren látnod kell három összekötött mezőt, rajtuk 2, 1, illetve 0 élőlénnyel.
+4. Ezek után a játéktéren látnod kell tíz összekötött mezőt, rajtuk két élőlénnyel.
 
 ## Lépések
 
